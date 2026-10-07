@@ -7,8 +7,10 @@ class BasePage:
         self.button_register_login = page.get_by_role("link", name="Signup / Login")
 
     def go_home(self):
-        self.page.goto("https://www.automationexercise.com/")
+        self.page.goto("")
 
     def go_cart(self):
-        self.button_cart.click()
+        self.page.goto("view_cart")
 
+    def go_signup_login(self):
+        self.page.goto("login")
