@@ -1,4 +1,3 @@
-from calendar import month
 from pages.signup_login import SignupLogin
 
 
@@ -17,12 +16,16 @@ class Signup(SignupLogin):
         self.input_first_name = page.get_by_role("textbox", name="First name *")
         self.input_last_name = page.get_by_role("textbox", name="Last name *")
         self.input_company = page.get_by_role("textbox", name="Company", exact=True)
-        self.input_street_address = page.get_by_role("textbox", name="Address * (Street address, P.")
+        self.input_address = page.get_by_role("textbox", name="Address * (Street address, P.")
         self.input_address_2 = page.get_by_role("textbox", name="Address 2")
         self.input_state = page.get_by_role("textbox", name="State *")
-        self.input_state = page.get_by_role("textbox", name="City * Zipcode *")
+        self.input_city = page.get_by_role("textbox", name="City * Zipcode *")
         self.input_zipcode = page.locator("#zipcode")
-        self_input_mobile_number = page.get_by_role("textbox", name="Mobile Number *")
+        self.input_mobile_number = page.get_by_role("textbox", name="Mobile Number *")
+        self.select_country = page.get_by_label("Country *")
+        self.button_create_account = page.get_by_role("button", name="Create Account")
+        self.button_continue = page.get_by_role("link", name="Continue")
+        self.button_delete_account = page.get_by_role("link", name="Delete Account")
 
     def fill_account_information(self, title="", name="", password="", date_of_birth="",
                                  sign_up_for_our_newsletter=True, receive_special_offers_from=True):
@@ -52,5 +55,25 @@ class Signup(SignupLogin):
         else:
             self.checkbox_receive_special_offers_from.uncheck()
 
-    def fill_address_information(self, first_name, last_name, company, address, address_2, country, state, city,
-                                 zipcode, mobile_number):
+    def fill_address_information(self, first_name="", last_name="", company="", address="", address_2="", country="", state="", city="",
+                                 zipcode="", mobile_number=""):
+        if first_name:
+            self.input_first_name.fill(first_name)
+        if last_name:
+            self.input_last_name.fill(last_name)
+        if company:
+            self.input_company.fill(company)
+        if address:
+            self.input_address.fill(address)
+        if address_2:
+            self.input_address_2.fill(address_2)
+        if country:
+            self.select_country.select_option(country)
+        if state:
+            self.input_state.fill(state)
+        if city:
+            self.input_city.fill(city)
+        if zipcode:
+            self.input_zipcode.fill(zipcode)
+        if mobile_number:
+            self.input_mobile_number.fill(mobile_number)

@@ -5,6 +5,8 @@ class BasePage:
         self.button_products = page.get_by_role("link", name="Products")
         self.button_cart = page.get_by_role("link", name="Cart")
         self.button_register_login = page.get_by_role("link", name="Signup / Login")
+        self.button_logout = page.get_by_role("link", name="Logout")
+        self.button_consent = page.get_by_role("button", name="Consent")
 
     def go_home(self):
         self.page.goto("")
@@ -12,5 +14,15 @@ class BasePage:
     def go_cart(self):
         self.page.goto("view_cart")
 
+    def go_product(self):
+        self.page.goto("products")
+
     def go_signup_login(self):
         self.page.goto("login")
+
+    def click_consent(self):
+        try:
+            self.page.get_by_text("This site asks for consent to").wait_for(state="visible", timeout=3000)
+            self.button_consent.click()
+        except:
+            pass
