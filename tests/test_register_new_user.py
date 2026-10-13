@@ -1,7 +1,7 @@
 from pages.signup import Signup
 from playwright.sync_api import expect
 
-def test_register_new_user(page):
+def test_register_new_user(page, accept_cookies):
     signup = Signup(page)
     signup.go_home()
     signup.button_register_login.click()

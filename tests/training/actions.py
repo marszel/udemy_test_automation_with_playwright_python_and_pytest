@@ -1,14 +1,14 @@
 from playwright.sync_api import expect
 
-def test_click_right_button(page):
+def test_click_right_button(page, accept_cookies):
     page.goto("https://www.automationexercise.com/")
     page.get_by_role("link", name="Website for automation").click(button="right")
 
-def test_click_position_parameter(page):
+def test_click_position_parameter(page, accept_cookies):
     page.goto("https://www.automationexercise.com/")
     page.get_by_role("link", name="Website for automation").click(position={"x":10, "y":10})
 
-def test_click_modifiers_parameter(page):
+def test_click_modifiers_parameter(page, accept_cookies):
     page.goto("https://www.automationexercise.com/")
     page.get_by_role("link", name="(5) H&M").click(modifiers=["Control"])
 
@@ -20,7 +20,7 @@ def test_click_timeout(page):
     page.goto("https://www.bootswatch.com/default/")
     page.get_by_role("button", name="Primary").nth(1).click(timeout=5000)
 
-def test_fill(page):
+def test_fill(page, accept_cookies):
     page.goto("https://www.automationexercise.com/login")
     page.get_by_role("textbox", name="Name").fill("Katarzyna", timeout=10000)
     page.locator("form").filter(has_text="Signup").get_by_placeholder("Email Address").fill("kkowalska@test.com")
@@ -53,16 +53,16 @@ def test_type(page):
     page.goto("https://www.bootswatch.com/default/")
     page.get_by_role("textbox", name="Example textarea").type("This is an example text to be typed.", delay=150)
 
-def test_hover(page):
+def test_hover(page, accept_cookies):
     page.goto("https://www.automationexercise.com/")
     page.locator(".single-products:visible").filter(has_text = "Madame Top For Women").hover()
     page.locator("div:nth-child(9) > .product-image-wrapper > .single-products > .productinfo > .btn").click()
 
-def test_dblclick(page):
+def test_dblclick(page, accept_cookies):
     page.goto("https://www.automationexercise.com/login")
     page.locator(".login-form h2").dblclick()
 
-def test_expect(page):
+def test_expect(page, accept_cookies):
     page.goto("https://www.automationexercise.com/")
     page.locator(".single-products:visible").filter(has_text="Madame Top For Women").hover()
     page.locator("div:nth-child(9) > .product-image-wrapper > .single-products > .productinfo > .btn").click()

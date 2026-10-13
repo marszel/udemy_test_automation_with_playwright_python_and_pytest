@@ -2,7 +2,7 @@ from pages.products import Products
 from pages.cart import Cart
 
 
-def test_add_products_to_cart(page):
+def test_add_products_to_cart(page, accept_cookies):
     products = Products(page)
     cart = Cart(page)
     products.go_product()
