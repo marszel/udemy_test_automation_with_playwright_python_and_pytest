@@ -9,3 +9,7 @@ __pycache__/
 .reports/
 test-results/
 videos/
+stores/
+reports/
+images/
+playwright/auth/
