@@ -15,7 +15,6 @@ def test_add_product_to_cart_case_less_than_500(page, accept_cookies):
 def test_delete_all_products_in_cart(page, accept_cookies):
     cart = Cart(page)
     cart.go_cart()
-    page.pause()
     while cart.button_delete_product.first.is_visible():
         cart.button_delete_product.first.click()
         page.wait_for_timeout(1000)
